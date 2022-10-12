@@ -1,15 +1,17 @@
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionic from 'react-native-vector-icons/Ionicons';
 function PostFooterButtonComponent({data, like, setLike}) {
+  useEffect(() => {
+    console.log(data);
+  }, [data.isLiked]);
   return (
     <View style={styles.postFooterButton}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <TouchableOpacity
           onPress={() => {
-            console.log(data);
             setLike(data.postId);
           }}>
           <AntDesign

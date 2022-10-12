@@ -2,13 +2,13 @@ import {View, Text, Image, TextInput, StyleSheet} from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import PostTitleComponent from './PostTitleComponent';
 import PostFooterButtonComponent from './PostFooterButtonComponent';
-import PostContext from '../../contexts/PostContext';
+import {usePostContext} from '../../contexts/PostContext';
 
 function CardComponent({data, index}) {
   const like = data.isLiked;
-  const {onLikePostToggle} = useContext(PostContext);
+  const {onLikePostToggle} = usePostContext();
   return (
-    <View key={index} style={styles.wrapper}>
+    <View style={styles.wrapper}>
       <PostTitleComponent data={data} />
       <View style={styles.postImageWrapper}>
         <Image source={data.postImage} style={{width: '100%', height: 400}} />

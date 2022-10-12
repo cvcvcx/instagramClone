@@ -1,7 +1,7 @@
 import React from 'react';
 import {createContext, useState} from 'react';
-
-const PostContext = createContext();
+import {useContext} from 'react';
+const PostContext = createContext(null);
 const postInfo = [
   {
     postId: 1,
@@ -40,7 +40,6 @@ const postInfo = [
 export function PostContextProvider({children}) {
   const [posts, setPosts] = useState(postInfo);
   const onLikePostToggle = postId => {
-    console.log(postId);
     setPosts(
       posts.map(post =>
         post.postId === postId
@@ -60,5 +59,10 @@ export function PostContextProvider({children}) {
     </PostContext.Provider>
   );
 }
-
-export default PostContext;
+export function usePostContext() {
+  const postContext = useContext(PostContext);
+  if (!postContext) {
+    throw new Error('PostContext.Provider is not found');
+  }
+  return postContext;
+}
