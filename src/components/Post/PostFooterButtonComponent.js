@@ -7,7 +7,11 @@ function PostFooterButtonComponent({data, like, setLike}) {
   return (
     <View style={styles.postFooterButton}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <TouchableOpacity onPress={() => setLike(!like)}>
+        <TouchableOpacity
+          onPress={() => {
+            console.log(data);
+            setLike(data.postId);
+          }}>
           <AntDesign
             name={like ? 'heart' : 'hearto'}
             style={{

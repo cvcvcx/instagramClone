@@ -4,6 +4,7 @@ import {createContext, useState} from 'react';
 const PostContext = createContext();
 const postInfo = [
   {
+    postId: 1,
     postTitle: 'mr shermon',
     postPersonImage: require('../storage/images/userProfile.png'),
     postImage: require('../storage/images/post1.jpg'),
@@ -11,6 +12,7 @@ const postInfo = [
     isLiked: true,
   },
   {
+    postId: 2,
     postTitle: 'chillhouse',
     postPersonImage: require('../storage/images/profile5.jpg'),
     postImage: require('../storage/images/post2.jpg'),
@@ -18,6 +20,7 @@ const postInfo = [
     isLiked: false,
   },
   {
+    postId: 3,
     postTitle: 'Tom',
     postPersonImage: require('../storage/images/profile4.jpg'),
     postImage: require('../storage/images/post3.jpg'),
@@ -25,6 +28,7 @@ const postInfo = [
     isLiked: false,
   },
   {
+    postId: 4,
     postTitle: 'The_Groot',
     postPersonImage: require('../storage/images/profile3.jpg'),
     postImage: require('../storage/images/post4.jpg'),
@@ -35,9 +39,23 @@ const postInfo = [
 
 export function PostContextProvider({children}) {
   const [posts, setPosts] = useState(postInfo);
+  const onLikePostToggle = postId => {
+    console.log(postId);
+    setPosts(
+      posts.map(post =>
+        post.postId === postId
+          ? {
+              ...post,
+              isLiked: !post.isLiked,
+              likes: post.isLiked ? post.likes - 1 : post.likes + 1,
+            }
+          : post,
+      ),
+    );
+  };
   const createPost = newPost => setPosts(posts.concat(newPost));
   return (
-    <PostContext.Provider value={{posts, createPost}}>
+    <PostContext.Provider value={{posts, createPost, onLikePostToggle}}>
       {children}
     </PostContext.Provider>
   );

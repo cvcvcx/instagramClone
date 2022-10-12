@@ -1,23 +1,26 @@
 import {View, Text, Image, TextInput, StyleSheet} from 'react-native';
-
-import Entypo from 'react-native-vector-icons/Entypo';
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import PostTitleComponent from './PostTitleComponent';
 import PostFooterButtonComponent from './PostFooterButtonComponent';
+import PostContext from '../../contexts/PostContext';
 
 function CardComponent({data, index}) {
-  const [like, setLike] = useState(data.isLiked);
+  const like = data.isLiked;
+  const {onLikePostToggle} = useContext(PostContext);
   return (
     <View key={index} style={styles.wrapper}>
       <PostTitleComponent data={data} />
       <View style={styles.postImageWrapper}>
         <Image source={data.postImage} style={{width: '100%', height: 400}} />
       </View>
-      <PostFooterButtonComponent data={data} like={like} setLike={setLike} />
+      <PostFooterButtonComponent
+        data={data}
+        like={like}
+        setLike={onLikePostToggle}
+      />
       <View style={{paddingHorizontal: 15}}>
         <Text>
-          Liked by {like ? 'you and' : ''} {like ? data.likes + 1 : data.likes}{' '}
-          others
+          Liked by {like ? 'you and' : ''} {data.likes} others
         </Text>
         <Text style={styles.descriptionBody}>
           If enjoy the video ! Please like and Subscribe :)

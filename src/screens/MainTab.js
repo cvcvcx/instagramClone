@@ -30,28 +30,8 @@ function MainTab() {
           tabBarIcon: ({color, size}) => (
             <Icon name="home" color={color} size={size} />
           ),
-          headerLeft: ({onPress}) => (
-            <TouchableOpacity onPress={onPress}>
-              <Icon
-                name="ios-camera"
-                style={[{paddingLeft: 10, fontSize: 24, color: 'black'}]}
-              />
-            </TouchableOpacity>
-          ),
           title: 'Instagram',
           headerTitleAlign: 'center',
-          headerRight: ({onPress}) => {
-            return (
-              <View>
-                <TouchableOpacity onPress={onPress}>
-                  <Icon
-                    name="ios-send"
-                    style={[{paddingRight: 10, fontSize: 24, color: 'black'}]}
-                  />
-                </TouchableOpacity>
-              </View>
-            );
-          },
         }}
       />
       <Tab.Screen
