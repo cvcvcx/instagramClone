@@ -1,5 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, View, Pressable} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  TouchableOpacity,
+} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MainTab from './MainTab';
@@ -13,25 +19,27 @@ function RootStack() {
         component={MainTab}
         options={{
           headerLeft: ({onPress}) => (
-            <Pressable onPress={onPress}>
+            <TouchableOpacity onPress={onPress}>
               <Icon
                 name="ios-camera"
                 style={[{paddingLeft: 10, fontSize: 24, color: 'black'}]}
               />
-            </Pressable>
+            </TouchableOpacity>
           ),
           title: 'Instagram',
           headerTitleAlign: 'center',
-          headerRight: ({onPress}) => (
-            <View>
-              <Pressable onPress={onPress}>
-                <Icon
-                  name="ios-send"
-                  style={[{paddingRight: 10, fontSize: 24, color: 'black'}]}
-                />
-              </Pressable>
-            </View>
-          ),
+          headerRight: ({onPress}) => {
+            return (
+              <View>
+                <TouchableOpacity onPress={onPress}>
+                  <Icon
+                    name="ios-send"
+                    style={[{paddingRight: 10, fontSize: 24, color: 'black'}]}
+                  />
+                </TouchableOpacity>
+              </View>
+            );
+          },
         }}
       />
     </Stack.Navigator>

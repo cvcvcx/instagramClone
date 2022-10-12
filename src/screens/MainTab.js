@@ -9,6 +9,11 @@ import AddMedia from '../components/AppTabNavigator/AddMedia';
 import Icon from 'react-native-vector-icons/Ionicons';
 const Tab = createBottomTabNavigator();
 function MainTab() {
+  const onPress = () => {
+    console.log('====================================');
+    console.log('Hello!');
+    console.log('====================================');
+  };
   return (
     <Tab.Navigator
       initialRouteName="Home"

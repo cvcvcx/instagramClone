@@ -1,11 +1,12 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import React from 'react';
+import CardComponent from '../CardComponent';
 
 function HomeTab() {
   return (
-    <View style={styles.container}>
-      <Text>HomeTab</Text>
-    </View>
+    <ScrollView>
+      <CardComponent />
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
