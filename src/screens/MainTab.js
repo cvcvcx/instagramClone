@@ -1,5 +1,11 @@
 import React from 'react';
-import {StyleSheet, SafeAreaView, Text} from 'react-native';
+import {
+  StyleSheet,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeTab from '../components/AppTabNavigator/HomeTab';
 import LikesTab from '../components/AppTabNavigator/LikesTab';
@@ -15,7 +21,7 @@ function MainTab() {
       screenOptions={{
         tabBarActiveTintColor: 'black',
         tabBarShowLabel: false,
-        headerShown: false,
+        headerShown: true,
       }}>
       <Tab.Screen
         name="Home"
@@ -24,6 +30,28 @@ function MainTab() {
           tabBarIcon: ({color, size}) => (
             <Icon name="home" color={color} size={size} />
           ),
+          headerLeft: ({onPress}) => (
+            <TouchableOpacity onPress={onPress}>
+              <Icon
+                name="ios-camera"
+                style={[{paddingLeft: 10, fontSize: 24, color: 'black'}]}
+              />
+            </TouchableOpacity>
+          ),
+          title: 'Instagram',
+          headerTitleAlign: 'center',
+          headerRight: ({onPress}) => {
+            return (
+              <View>
+                <TouchableOpacity onPress={onPress}>
+                  <Icon
+                    name="ios-send"
+                    style={[{paddingRight: 10, fontSize: 24, color: 'black'}]}
+                  />
+                </TouchableOpacity>
+              </View>
+            );
+          },
         }}
       />
       <Tab.Screen
