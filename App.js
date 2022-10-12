@@ -1,13 +1,13 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import RootStack from './src/screens/RootStack';
-import {NativeBaseProvider} from 'native-base';
+import {PostContextProvider} from './src/contexts/PostContext';
 function App() {
   return (
     <NavigationContainer>
-      <NativeBaseProvider>
+      <PostContextProvider>
         <RootStack />
-      </NativeBaseProvider>
+      </PostContextProvider>
     </NavigationContainer>
   );
 }

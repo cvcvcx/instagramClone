@@ -1,11 +1,11 @@
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import React from 'react';
-import CardComponent from '../CardComponent';
+import PostComponent from '../Post/PostComponent';
 
 function HomeTab() {
   return (
     <ScrollView>
-      <CardComponent />
+      <PostComponent />
     </ScrollView>
   );
 }
