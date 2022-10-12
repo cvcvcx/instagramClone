@@ -18,28 +18,7 @@ function RootStack() {
         name="MainTab"
         component={MainTab}
         options={{
-          headerLeft: ({onPress}) => (
-            <TouchableOpacity onPress={onPress}>
-              <Icon
-                name="ios-camera"
-                style={[{paddingLeft: 10, fontSize: 24, color: 'black'}]}
-              />
-            </TouchableOpacity>
-          ),
-          title: 'Instagram',
-          headerTitleAlign: 'center',
-          headerRight: ({onPress}) => {
-            return (
-              <View>
-                <TouchableOpacity onPress={onPress}>
-                  <Icon
-                    name="ios-send"
-                    style={[{paddingRight: 10, fontSize: 24, color: 'black'}]}
-                  />
-                </TouchableOpacity>
-              </View>
-            );
-          },
+          headerShown: false,
         }}
       />
     </Stack.Navigator>
