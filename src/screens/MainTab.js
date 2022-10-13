@@ -1,18 +1,11 @@
 import React from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeTab from '../components/AppTabNavigator/HomeTab';
 import LikesTab from '../components/AppTabNavigator/LikesTab';
 import ProfileTab from '../components/AppTabNavigator/ProfileTab';
 import SearchTab from '../components/AppTabNavigator/SearchTab';
-import AddMedia from '../components/AppTabNavigator/AddMedia';
 import Icon from 'react-native-vector-icons/Ionicons';
+import UploadPostButton from '../components/Post/UploadPostButton';
 const Tab = createBottomTabNavigator();
 function MainTab() {
   return (
@@ -32,6 +25,7 @@ function MainTab() {
           ),
           title: 'Instagram',
           headerTitleAlign: 'center',
+          headerRight: () => <UploadPostButton />,
         }}
       />
       <Tab.Screen
@@ -40,15 +34,6 @@ function MainTab() {
         options={{
           tabBarIcon: ({color, size}) => (
             <Icon name="search" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="AddMedia"
-        component={AddMedia}
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Icon name="ios-add-circle" color={color} size={size} />
           ),
         }}
       />
