@@ -4,17 +4,10 @@ import PostComponent from '../Post/PostComponent';
 //스택 네비게이션 추가 예정
 function HomeTab() {
   return (
-    <ScrollView>
+    <View style={{flex: 1}}>
       <PostComponent />
-    </ScrollView>
+    </View>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
 export default HomeTab;

@@ -1,10 +1,11 @@
 import React from 'react';
 import {createContext, useState} from 'react';
 import {useContext} from 'react';
+import {v4} from 'uuid';
 const PostContext = createContext(null);
 const postInfo = [
   {
-    postId: 1,
+    postId: v4(),
     postTitle: 'mr shermon',
     postPersonImage: require('../storage/images/userProfile.png'),
     postImage: require('../storage/images/post1.jpg'),
@@ -12,7 +13,7 @@ const postInfo = [
     isLiked: true,
   },
   {
-    postId: 2,
+    postId: v4(),
     postTitle: 'chillhouse',
     postPersonImage: require('../storage/images/profile5.jpg'),
     postImage: require('../storage/images/post2.jpg'),
@@ -20,7 +21,7 @@ const postInfo = [
     isLiked: false,
   },
   {
-    postId: 3,
+    postId: v4(),
     postTitle: 'Tom',
     postPersonImage: require('../storage/images/profile4.jpg'),
     postImage: require('../storage/images/post3.jpg'),
@@ -28,7 +29,7 @@ const postInfo = [
     isLiked: false,
   },
   {
-    postId: 4,
+    postId: v4(),
     postTitle: 'The_Groot',
     postPersonImage: require('../storage/images/profile3.jpg'),
     postImage: require('../storage/images/post4.jpg'),

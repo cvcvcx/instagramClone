@@ -1,12 +1,16 @@
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionic from 'react-native-vector-icons/Ionicons';
 function PostFooterButtonComponent({data, like, setLike}) {
-  useEffect(() => {
+  //유즈 콜백을 통해 useEffect의 의존성을 logData가 변화할 때로 바꿈
+  const logData = useCallback(() => {
     console.log(data);
-  }, [data.isLiked]);
+  }, [data]);
+  useEffect(() => {
+    logData();
+  }, [logData]);
   return (
     <View style={styles.postFooterButton}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>

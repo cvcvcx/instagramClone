@@ -43,6 +43,7 @@ function CardComponent({data, index}) {
 }
 const styles = StyleSheet.create({
   wrapper: {
+    flex: 1,
     paddingBottom: 10,
     borderBottomColor: 'gray',
     borderBottomWidth: 0.1,
