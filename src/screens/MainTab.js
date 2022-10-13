@@ -17,6 +17,7 @@ import {useNavigation} from '@react-navigation/native';
 import UploadPostButton from '../components/Post/UploadPostButton';
 const Tab = createBottomTabNavigator();
 function MainTab() {
+  const navigation = useNavigation();
   return (
     <Tab.Navigator
       initialRouteName="Home"
