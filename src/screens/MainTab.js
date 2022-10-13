@@ -12,9 +12,13 @@ import LikesTab from '../components/AppTabNavigator/LikesTab';
 import ProfileTab from '../components/AppTabNavigator/ProfileTab';
 import SearchTab from '../components/AppTabNavigator/SearchTab';
 import AddMedia from '../components/AppTabNavigator/AddMedia';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/Ionicons';
+import UploadScreen from './UploadScreen';
+import {useNavigation} from '@react-navigation/native';
 const Tab = createBottomTabNavigator();
 function MainTab() {
+  const navigation = useNavigation();
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -22,6 +26,7 @@ function MainTab() {
         tabBarActiveTintColor: 'black',
         tabBarShowLabel: false,
         headerShown: true,
+        headerStyle: {backgroundColor: 'black'},
       }}>
       <Tab.Screen
         name="Home"
@@ -31,7 +36,21 @@ function MainTab() {
             <Icon name="home" color={color} size={size} />
           ),
           title: 'Instagram',
+          headerTitleContainerStyle: {color: 'black'},
           headerTitleAlign: 'center',
+          headerRight: () => (
+            <TouchableOpacity
+              style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
+              onPress={() => {
+                navigation.navigate('UploadScreen');
+              }}>
+              <AntDesign
+                name="plussquareo"
+                size={24}
+                style={{marginRight: 10}}
+              />
+            </TouchableOpacity>
+          ),
         }}
       />
       <Tab.Screen
@@ -40,15 +59,6 @@ function MainTab() {
         options={{
           tabBarIcon: ({color, size}) => (
             <Icon name="search" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="AddMedia"
-        component={AddMedia}
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <Icon name="ios-add-circle" color={color} size={size} />
           ),
         }}
       />
