@@ -11,10 +11,11 @@ import HomeTab from '../components/AppTabNavigator/HomeTab';
 import LikesTab from '../components/AppTabNavigator/LikesTab';
 import ProfileTab from '../components/AppTabNavigator/ProfileTab';
 import SearchTab from '../components/AppTabNavigator/SearchTab';
+import AddMedia from '../components/AppTabNavigator/AddMedia';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/Ionicons';
+import UploadScreen from './UploadScreen';
 import {useNavigation} from '@react-navigation/native';
-import UploadPostButton from '../components/Post/UploadPostButton';
 const Tab = createBottomTabNavigator();
 function MainTab() {
   const navigation = useNavigation();
@@ -25,6 +26,7 @@ function MainTab() {
         tabBarActiveTintColor: 'black',
         tabBarShowLabel: false,
         headerShown: true,
+        headerStyle: {backgroundColor: 'black'},
       }}>
       <Tab.Screen
         name="Home"
@@ -36,7 +38,19 @@ function MainTab() {
           title: 'Instagram',
           headerTitleContainerStyle: {color: 'black'},
           headerTitleAlign: 'center',
-          headerRight: () => <UploadPostButton />,
+          headerRight: () => (
+            <TouchableOpacity
+              style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
+              onPress={() => {
+                navigation.navigate('UploadScreen');
+              }}>
+              <AntDesign
+                name="plussquareo"
+                size={24}
+                style={{marginRight: 10}}
+              />
+            </TouchableOpacity>
+          ),
         }}
       />
       <Tab.Screen
